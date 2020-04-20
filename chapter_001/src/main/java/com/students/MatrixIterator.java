@@ -1,8 +1,9 @@
 package com.students;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
-public class MatrixIterator implements Iterator {
+public class MatrixIterator implements Iterator<Integer> {
     private final int[] flatMatrix;
     private int pointer = 0;
 
@@ -26,7 +27,10 @@ public class MatrixIterator implements Iterator {
     }
 
     @Override
-    public Object next() {
+    public Integer next() {
+        if (!hasNext()) {
+            throw new NoSuchElementException("No elements to provide");
+        }
         return this.flatMatrix[this.pointer++];
     }
 }
