@@ -1,4 +1,4 @@
-package com.students;
+package com.iterator;
 
 import org.junit.Before;
 import org.junit.Test;

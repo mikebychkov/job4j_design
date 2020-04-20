@@ -1,4 +1,4 @@
-package com.students;
+package com.iterator;
 
 import java.util.Arrays;
 import java.util.Iterator;
