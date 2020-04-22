@@ -36,21 +36,21 @@ public class SimpleArray<T> implements Iterable<T> {
 
     private class SimpleIterator<T> implements Iterator<T> {
 
-        private final Object[] objects;
+        private final SimpleArray<T> sa;
         private int itPointer = 0;
 
         public SimpleIterator(SimpleArray<T> sa) {
-            this.objects = sa.objects;
+            this.sa = sa;
         }
 
         @Override
         public boolean hasNext() {
-            return this.itPointer < this.objects.length;
+            return this.itPointer < sa.objects.length;
         }
 
         @Override
         public T next() {
-            return (T) this.objects[itPointer++];
+            return (T) sa.objects[itPointer++];
         }
     }
 }
