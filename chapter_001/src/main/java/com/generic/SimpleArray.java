@@ -31,10 +31,10 @@ public class SimpleArray<T> implements Iterable<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new SimpleIterator<>(this);
+        return new SimpleIterator(this);
     }
 
-    private class SimpleIterator<T> implements Iterator<T> {
+    private class SimpleIterator implements Iterator<T> {
 
         private final SimpleArray<T> sa;
         private int itPointer = 0;

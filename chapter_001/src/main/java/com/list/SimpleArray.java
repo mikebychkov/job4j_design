@@ -46,10 +46,10 @@ public class SimpleArray<T> implements Iterable<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new SimpleIterator<T>(this);
+        return new SimpleIterator(this);
     }
 
-    private class SimpleIterator<T> implements Iterator<T> {
+    private class SimpleIterator implements Iterator<T> {
 
         private SimpleArray<T> obj;
         private int modCount = 0;
