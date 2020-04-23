@@ -10,8 +10,8 @@ public class SimpleList<T> implements Iterable<T> {
     private int size = 0;
     private int modCount = 0;
 
-    private SimpleList<T>.Node first;
-    private SimpleList<T>.Node last;
+    private Node first;
+    private Node last;
 
     public SimpleList() {
     }
@@ -93,7 +93,7 @@ public class SimpleList<T> implements Iterable<T> {
     private class SimpleIterator implements Iterator<T> {
 
         private SimpleList<T> sl;
-        private SimpleList<T>.Node resent;
+        private Node resent;
         private int modCount = 0;
 
         public SimpleIterator(SimpleList<T> sl) {
