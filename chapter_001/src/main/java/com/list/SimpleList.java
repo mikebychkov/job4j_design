@@ -69,6 +69,21 @@ public class SimpleList<T> implements Iterable<T> {
         return this.size / 2 + 1;
     }
 
+    public int size() {
+        return this.size;
+    }
+
+    public void remove(int index) {
+        Node rsl = getNode(index);
+        if (rsl.prev != null) {
+            rsl.prev.next = rsl.next;
+        }
+        if (rsl.next != null) {
+            rsl.next.prev = rsl.prev;
+        }
+        this.size--;
+    }
+
     private class Node {
         T value;
         Node prev;
