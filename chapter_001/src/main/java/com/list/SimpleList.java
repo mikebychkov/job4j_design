@@ -17,7 +17,7 @@ public class SimpleList<T> implements Iterable<T> {
 
     public void add(T model) {
         Node n = new Node(model);
-        connectNode(this, n);
+        connectNode(n);
         this.last = n;
         if (this.first == null) {
             this.first = n;
@@ -104,10 +104,10 @@ public class SimpleList<T> implements Iterable<T> {
         }
     }
 
-    private void connectNode(SimpleList<T> sl, Node n) {
-        n.prev = sl.last;
-        if (sl.last != null) {
-            sl.last.next = n;
+    private void connectNode(Node n) {
+        n.prev = this.last;
+        if (this.last != null) {
+            this.last.next = n;
         }
     }
 
