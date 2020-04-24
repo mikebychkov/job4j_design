@@ -1,6 +1,5 @@
 package com.list;
 
-import java.util.Arrays;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -29,21 +28,26 @@ public class SimpleList<T> implements Iterable<T> {
 
     public T get(int index) {
         Node rsl = getNode(index);
-        if (rsl == null) {
-            throw new NoSuchElementException();
-        }
         return rsl.value;
     }
 
     private Node getNode(int index) {
+        Node rsl = null;
         if (index < getHalfSize()) {
-            return getNodeAsc(index);
+            rsl = getNodeAsc(index);
         } else {
-            return getNodeDesc(index);
+            rsl = getNodeDesc(index);
         }
+        if (rsl == null) {
+            throw new NoSuchElementException();
+        }
+        return rsl;
     }
 
     private Node getNodeAsc(int index) {
+        if (this.first == null) {
+            return null;
+        }
         Node n = this.first;
         for (int i = 0; i <= getHalfSize(); i++) {
             if (i == index) {
@@ -55,6 +59,9 @@ public class SimpleList<T> implements Iterable<T> {
     }
 
     private Node getNodeDesc(int index) {
+        if (this.last == null) {
+            return null;
+        }
         Node n = this.last;
         for (int i = this.size - 1; i > getHalfSize(); i--) {
             if (i == index) {
@@ -82,6 +89,10 @@ public class SimpleList<T> implements Iterable<T> {
             rsl.next.prev = rsl.prev;
         }
         this.size--;
+        if (this.size == 0) {
+            this.first = null;
+            this.last = null;
+        }
     }
 
     private class Node {

@@ -13,4 +13,8 @@ public class SimpleStack<T> {
     public void push(T value) {
         this.linked.add(value);
     }
+
+    public int size() {
+        return this.linked.size();
+    }
 }
