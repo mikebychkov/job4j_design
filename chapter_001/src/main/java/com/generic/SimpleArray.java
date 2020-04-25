@@ -10,22 +10,45 @@ public class SimpleArray<T> implements Iterable<T> {
         this.objects = new Object[len];
     }
 
-    public void add(T model) {
-        this.objects[this.pointer++] = model;
+    private boolean indexInvalid(int index) {
+        if (index >= 0 && index < this.objects.length) {
+            return false;
+        }
+        return true;
     }
 
-    public void set(int index, T model) {
+    public boolean add(T model) {
+        int index = this.pointer++;
+        if (indexInvalid(index)) {
+            return false;
+        }
         this.objects[index] = model;
+        return true;
     }
 
-    public void remove(int index) {
+    public boolean set(int index, T model) {
+        if (indexInvalid(index)) {
+            return false;
+        }
+        this.objects[index] = model;
+        return true;
+    }
+
+    public boolean remove(int index) {
+        if (indexInvalid(index)) {
+            return false;
+        }
         for (int i = index; i < this.objects.length - 1; i++) {
             this.objects[i] = this.objects[i + 1];
         }
         this.objects[this.objects.length - 1] = null;
+        return true;
     }
 
     public T get(int index) {
+        if (indexInvalid(index)) {
+            return null;
+        }
         return (T) this.objects[index];
     }
 
