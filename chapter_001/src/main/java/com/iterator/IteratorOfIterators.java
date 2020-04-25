@@ -3,17 +3,30 @@ package com.iterator;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class IteratorOfIterators {
 
     public Iterator<Integer> convert(Iterator<Iterator<Integer>> iit) {
-        List<Integer> list = new ArrayList<>();
-        while (iit.hasNext()) {
+        return new Iterator<Integer>() {
             Iterator<Integer> it = iit.next();
-            while (it.hasNext()) {
-                list.add(it.next());
+
+            @Override
+            public boolean hasNext() {
+                return it.hasNext();
             }
-        }
-        return list.iterator();
+
+            @Override
+            public Integer next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                Integer rsl = it.next();
+                if (!it.hasNext() && iit.hasNext()) {
+                    it = iit.next();
+                }
+                return rsl;
+            }
+        };
     }
 }
