@@ -24,6 +24,7 @@ public class UserTest {
 
         System.out.println(usr1.hashCode());
         System.out.println(usr2.hashCode());
+        System.out.println(usr1.equals(usr2));
         System.out.println(map);
     }
 }
