@@ -22,6 +22,8 @@ public class UserTest {
         map.put(usr1, "record#1");
         map.put(usr2, "record#2");
 
+        System.out.println(usr1.hashCode());
+        System.out.println(usr2.hashCode());
         System.out.println(map);
     }
 }
