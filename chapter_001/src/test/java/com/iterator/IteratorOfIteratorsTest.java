@@ -97,4 +97,15 @@ public class IteratorOfIteratorsTest {
         assertThat(it.next(), is(3));
         it.next();
     }
+
+    @Test
+    public void firstITEmpty() {
+        Iterator<Integer> it11 = new ArrayList<Integer>().iterator();
+        Iterator<Integer> it12 = Arrays.asList(4, 5, 6).iterator();
+        Iterator<Integer> it13 = Arrays.asList(7, 8, 9).iterator();
+        Iterator<Iterator<Integer>> its = Arrays.asList(it11, it12, it13).iterator();
+        IteratorOfIterators iteratorOfIterators = new IteratorOfIterators();
+        it = iteratorOfIterators.convert(its);
+        assertThat(it.next(), is(4));
+    }
 }

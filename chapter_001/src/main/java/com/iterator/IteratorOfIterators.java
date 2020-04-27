@@ -8,11 +8,15 @@ import java.util.NoSuchElementException;
 public class IteratorOfIterators {
 
     public Iterator<Integer> convert(Iterator<Iterator<Integer>> iit) {
+
         return new Iterator<Integer>() {
-            Iterator<Integer> it = iit.next();
+            private Iterator<Integer> it = new ArrayList<Integer>().iterator();
 
             @Override
             public boolean hasNext() {
+                while (iit.hasNext() && !it.hasNext()) {
+                    it = iit.next();
+                }
                 return it.hasNext();
             }
 
@@ -21,11 +25,7 @@ public class IteratorOfIterators {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-                Integer rsl = it.next();
-                if (!it.hasNext() && iit.hasNext()) {
-                    it = iit.next();
-                }
-                return rsl;
+                return it.next();
             }
         };
     }
