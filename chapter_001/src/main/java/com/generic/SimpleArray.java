@@ -11,10 +11,7 @@ public class SimpleArray<T> implements Iterable<T> {
     }
 
     private boolean indexInvalid(int index) {
-        if (index >= 0 && index < this.objects.length) {
-            return false;
-        }
-        return true;
+        return index < 0 || index >= this.objects.length;
     }
 
     public boolean add(T model) {
