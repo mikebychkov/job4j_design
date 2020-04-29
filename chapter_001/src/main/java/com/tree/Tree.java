@@ -15,7 +15,7 @@ class Tree<E> implements SimpleTree<E> {
         if (pNode.isEmpty()) {
             return false;
         }
-        pNode.get().addChild(new Node<>(child));
+        pNode.get().children.add(new Node<>(child));
         return true;
     }
 
@@ -33,5 +33,18 @@ class Tree<E> implements SimpleTree<E> {
             data.addAll(el.children);
         }
         return rsl;
+    }
+
+    public boolean isBinary() {
+        Queue<Node<E>> data = new LinkedList<>();
+        data.offer(this.root);
+        while (!data.isEmpty()) {
+            Node<E> el = data.poll();
+            if (el.children.size() > 2) {
+                return false;
+            }
+            data.addAll(el.children);
+        }
+        return true;
     }
 }
