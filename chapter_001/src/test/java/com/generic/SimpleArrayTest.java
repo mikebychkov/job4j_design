@@ -17,7 +17,25 @@ public class SimpleArrayTest {
         arr.add("qwas2");
         arr.add("qwas3");
         assertThat(arr.get(1), is("qwas2"));
-        assertThat(arr.get(4), nullValue(null));
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void getNonExisted() {
+        SimpleArray<String> arr = new SimpleArray<>(5);
+        arr.add("qwas1");
+        arr.add("qwas2");
+        arr.add("qwas3");
+        arr.get(4);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void addThenRemoveThenGet() {
+        SimpleArray<String> arr = new SimpleArray<>(5);
+        arr.add("qwas1");
+        arr.add("qwas2");
+        arr.add("qwas3");
+        arr.remove(0);
+        arr.get(2);
     }
 
     @Test
@@ -26,10 +44,11 @@ public class SimpleArrayTest {
         arr.add("qwas1");
         arr.add("qwas2");
         arr.add("qwas3");
+        arr.add("qwas4");
         arr.set(0, "QWAS11");
-        arr.set(4, "QWAS13");
+        arr.set(3, "QWAS13");
         assertThat(arr.get(0), is("QWAS11"));
-        assertThat(arr.get(4), is("QWAS13"));
+        assertThat(arr.get(3), is("QWAS13"));
     }
 
     @Test
@@ -41,6 +60,20 @@ public class SimpleArrayTest {
         arr.remove(0);
         arr.remove(0);
         assertThat(arr.get(0), is("qwas3"));
+    }
+
+    @Test
+    public void testSize() {
+        SimpleArray<String> arr = new SimpleArray<>(5);
+        arr.add("qwas1");
+        arr.add("qwas2");
+        arr.add("qwas3");
+        assertThat(arr.size(), is(3));
+        arr.add("qwas4");
+        arr.add("qwas5");
+        assertThat(arr.size(), is(5));
+        arr.remove(0);
+        assertThat(arr.size(), is(4));
     }
 
     @Test

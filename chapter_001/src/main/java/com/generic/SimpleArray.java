@@ -1,6 +1,8 @@
 package com.generic;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.Objects;
 
 public class SimpleArray<T> implements Iterable<T> {
     private Object[] objects;
@@ -10,42 +12,30 @@ public class SimpleArray<T> implements Iterable<T> {
         this.objects = new Object[len];
     }
 
-    private boolean indexInvalid(int index) {
-        return index < 0 || index >= this.objects.length;
+    public int size() {
+        return this.pointer;
     }
 
-    public boolean add(T model) {
-        int index = this.pointer++;
-        if (indexInvalid(index)) {
-            return false;
-        }
+    public void add(T model) {
+        Objects.checkIndex(this.pointer, this.objects.length);
+        this.objects[this.pointer++] = model;
+    }
+
+    public void set(int index, T model) {
+        Objects.checkIndex(index, this.size());
         this.objects[index] = model;
-        return true;
     }
 
-    public boolean set(int index, T model) {
-        if (indexInvalid(index)) {
-            return false;
-        }
-        this.objects[index] = model;
-        return true;
-    }
-
-    public boolean remove(int index) {
-        if (indexInvalid(index)) {
-            return false;
-        }
-        for (int i = index; i < this.objects.length - 1; i++) {
-            this.objects[i] = this.objects[i + 1];
-        }
-        this.objects[this.objects.length - 1] = null;
-        return true;
+    public void remove(int index) {
+        Objects.checkIndex(index, this.size());
+        int len = this.size() - 1 - index;
+        System.arraycopy(this.objects, index + 1, this.objects, index, len);
+        this.objects[this.size() - 1] = null;
+        this.pointer--;
     }
 
     public T get(int index) {
-        if (indexInvalid(index)) {
-            return null;
-        }
+        Objects.checkIndex(index, this.size());
         return (T) this.objects[index];
     }
 
@@ -70,6 +60,9 @@ public class SimpleArray<T> implements Iterable<T> {
 
         @Override
         public T next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
             return (T) sa.objects[itPointer++];
         }
     }
