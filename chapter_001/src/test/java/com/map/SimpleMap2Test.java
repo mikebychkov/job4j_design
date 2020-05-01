@@ -9,13 +9,13 @@ import java.util.NoSuchElementException;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-public class SimpleMapTest {
+public class SimpleMap2Test {
 
-    private SimpleMap<String, String> sm;
+    private SimpleMap2<String, String> sm;
 
     @Before
     public void setup() {
-        sm = new SimpleMap<>();
+        sm = new SimpleMap2<>();
     }
 
     @Test
