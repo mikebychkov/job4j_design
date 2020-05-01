@@ -1,9 +1,6 @@
 package com.iterator;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -77,9 +74,9 @@ public class IteratorOfIteratorsTest {
 
     @Test
     public void hasNextShouldReturnFalseInCaseOfEmptyIterators() {
-        Iterator<Integer> it1 = (new ArrayList<Integer>()).iterator();
-        Iterator<Integer> it2 = (new ArrayList<Integer>()).iterator();
-        Iterator<Integer> it3 = (new ArrayList<Integer>()).iterator();
+        Iterator<Integer> it1 = Collections.emptyIterator();
+        Iterator<Integer> it2 = Collections.emptyIterator();
+        Iterator<Integer> it3 = Collections.emptyIterator();
         Iterator<Iterator<Integer>> its = Arrays.asList(it1, it2, it3).iterator();
         IteratorOfIterators iteratorOfIterators = new IteratorOfIterators();
         it = iteratorOfIterators.convert(its);
@@ -100,7 +97,7 @@ public class IteratorOfIteratorsTest {
 
     @Test
     public void firstITEmpty() {
-        Iterator<Integer> it11 = new ArrayList<Integer>().iterator();
+        Iterator<Integer> it11 = Collections.emptyIterator();
         Iterator<Integer> it12 = Arrays.asList(4, 5, 6).iterator();
         Iterator<Integer> it13 = Arrays.asList(7, 8, 9).iterator();
         Iterator<Iterator<Integer>> its = Arrays.asList(it11, it12, it13).iterator();

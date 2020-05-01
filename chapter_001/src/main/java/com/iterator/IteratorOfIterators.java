@@ -1,16 +1,13 @@
 package com.iterator;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 public class IteratorOfIterators {
 
     public Iterator<Integer> convert(Iterator<Iterator<Integer>> iit) {
 
         return new Iterator<Integer>() {
-            private Iterator<Integer> it = new ArrayList<Integer>().iterator();
+            private Iterator<Integer> it = Collections.emptyIterator();
 
             @Override
             public boolean hasNext() {
