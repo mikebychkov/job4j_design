@@ -1,28 +1,30 @@
 package com.exam;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class Analize {
 
     public Info diff(List<User> previous, List<User> current) {
         Info rsl = new Info();
+        Map<Integer, User> userIdMap = current.stream().collect(
+                Collectors.toMap(usr -> usr.id, usr -> usr)
+        );
         for (User usr : previous) {
-            int index = current.indexOf(usr);
-            if (index < 0) {
+            User usrCur = userIdMap.get(usr.id);
+            if (usrCur == null) {
                 rsl.deleted++;
                 continue;
             }
-            if (!current.get(index).name.equals(usr.name)) {
+            if (!usrCur.name.equals(usr.name)) {
                 rsl.changed++;
             }
         }
-        for (User usr : current) {
-            int index = previous.indexOf(usr);
-            if (index < 0) {
-                rsl.added++;
-            }
-        }
+        rsl.added = current.size() - (previous.size() - rsl.deleted);
         return rsl;
     }
 
