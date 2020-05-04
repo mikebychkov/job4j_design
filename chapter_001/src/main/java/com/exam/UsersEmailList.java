@@ -20,16 +20,15 @@ public class UsersEmailList {
                 }
             }
             StringJoiner sj = new StringJoiner(",");
-            String userEmails = rsl.get(usr);
-            if (userEmails != null) {
+            String userEmails = rsl.getOrDefault(usr, "");
+            if (!userEmails.isEmpty()) {
                 sj.add(userEmails);
             }
             for (String email : emails) {
                 emap.put(email, usr);
-                if (userEmails != null && userEmails.contains(email)) {
-                    continue;
+                if (!userEmails.contains(email)) {
+                    sj.add(email);
                 }
-                sj.add(email);
             }
             rsl.put(usr, sj.toString());
         }
