@@ -55,7 +55,7 @@ public class SimpleArray<T> implements Iterable<T> {
 
         @Override
         public boolean hasNext() {
-            return this.itPointer < sa.objects.length;
+            return this.itPointer < sa.pointer;
         }
 
         @Override
