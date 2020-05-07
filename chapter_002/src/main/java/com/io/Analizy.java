@@ -43,7 +43,7 @@ public class Analizy {
         return out;
     }
 
-    private void writeFileStrings(String filename, List<String> data) {
+    public void writeFileStrings(String filename, List<String> data) {
         try (PrintWriter out = new PrintWriter(new FileOutputStream(filename))) {
             for (String str : data) {
                 out.println(str);
