@@ -24,7 +24,7 @@ public class AnalizyTest {
         Analizy an = new Analizy();
         an.unavailable(path1, path2);
 
-        assertThat(an.getFileStrings(path2).get(0), is("10:57:01;10:59:01;"));
+        assertThat(an.getFileFirstString(path2), is("10:57:01;10:59:01;"));
     }
 
     @Test
@@ -48,7 +48,7 @@ public class AnalizyTest {
         an.unavailable(sourcePath, targetPath);
 
         assertThat(
-                an.getFileStrings(targetPath).get(0),
+                an.getFileFirstString(targetPath),
                 is("10:57:01;10:59:01;")
         );
     }
