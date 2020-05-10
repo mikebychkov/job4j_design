@@ -11,6 +11,9 @@ public class ConsoleChat {
     private List<String> answers = new ArrayList<>();
     private List<String> log = new LinkedList<>();
     private String logFile = "";
+    private final String STOP_COMMAND = "стоп";
+    private final String CONTINUE_COMMAND = "продолжить";
+    private final String EXIT_COMMAND = "закончить";
 
     public ConsoleChat(String answersFile, String logFile) {
         File ansFl = new File(answersFile);
@@ -26,11 +29,11 @@ public class ConsoleChat {
         while (!exitMode) {
             String userIn = input.nextLine();
             this.log.add(userIn);
-            if (userIn.equals("стоп")) {
+            if (STOP_COMMAND.equals(userIn)) {
                 this.silentMode = true;
-            } else if (userIn.equals("продолжить")) {
+            } else if (CONTINUE_COMMAND.equals(userIn)) {
                 this.silentMode = false;
-            } else if (userIn.equals("закончить")) {
+            } else if (EXIT_COMMAND.equals(userIn)) {
                 this.exitMode = true;
                 continue;
             }
@@ -47,8 +50,8 @@ public class ConsoleChat {
     public List<String> readAnswers(String filename) {
         List<String> out = new ArrayList<>();
         try (BufferedReader read = new BufferedReader(new FileReader(filename))) {
-            read.lines().flatMap(
-                    ln -> Stream.of(ln.split(" "))
+            read.lines().map(ln -> ln.replace(".", ",")).flatMap(
+                    ln -> Stream.of(ln.split(","))
             ).forEach(out::add);
         } catch (Exception e) {
             e.printStackTrace();
