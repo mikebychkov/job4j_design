@@ -13,13 +13,12 @@ public class Search {
 
     public static void main(String[] args) throws IOException {
         Path start = Paths.get(".");
-        //Files.walkFileTree(start, new PrintFiles());
         search(start, "js").forEach(System.out::println);
     }
 
     public static class SearchFiles implements FileVisitor<Path> {
-        Predicate<Path> pathPredicate;
-        List<Path> listOfPaths = new ArrayList<>();
+        private Predicate<Path> pathPredicate;
+        private List<Path> listOfPaths = new ArrayList<>();
 
         public SearchFiles(Predicate<Path> pathPredicate) {
             this.pathPredicate = pathPredicate;
