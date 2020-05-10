@@ -4,7 +4,6 @@ import java.io.File;
 
 public class ArgZip {
 
-    private final String[] args;
     private boolean valid;
     private String errors = "";
     private String dir = "";
@@ -12,7 +11,6 @@ public class ArgZip {
     private String out = "";
 
     public ArgZip(String[] args) {
-        this.args = args;
         for (int i = 0; i < args.length; i += 2) {
             if (args[i].equals("-d")) {
                 this.dir = args[i + 1];
@@ -24,20 +22,23 @@ public class ArgZip {
                 this.out = args[i + 1];
             }
         }
-        this.valid = true;
-        if (dir.isEmpty() || excl.isEmpty() || out.isEmpty()) {
-            this.valid = false;
-            this.errors = "Arguments not set -d DIRECTORY -e EXCLUDED_EXTENSIONS -o OUTPUT";
-        } else {
-            File argFile = new File(dir);
-            if (!argFile.exists()) {
-                this.valid = false;
-                this.errors = "Directory is not exist!";
-            }
-        }
     }
 
     public boolean valid() {
+        this.valid = true;
+        if (this.dir.isEmpty() || this.excl.isEmpty() || this.out.isEmpty()) {
+            this.valid = false;
+            this.errors = "Arguments not set -d DIRECTORY -e EXCLUDED_EXTENSIONS -o OUTPUT";
+        } else {
+            File argFile = new File(this.dir);
+            if (!argFile.exists()) {
+                this.valid = false;
+                this.errors = "Directory is not exist!";
+            } else if (!argFile.isDirectory()) {
+                this.valid = false;
+                this.errors = "Directory is not a catalog!";
+            }
+        }
         return this.valid;
     }
 

@@ -12,20 +12,21 @@ public class Zip {
 
     public static void packFiles(List<File> sources, File target) {
         try (ZipOutputStream zip = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(target)))) {
-
             for (File source : sources) {
                 zip.putNextEntry(new ZipEntry(source.getPath()));
                 try (BufferedInputStream out = new BufferedInputStream(new FileInputStream(source))) {
                     zip.write(out.readAllBytes());
                 }
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
+        /*for (File source : sources) {
+            packSingleFile(source, target);
+        }*/
     }
 
-    public void packSingleFile(File source, File target) {
+    public static void packSingleFile(File source, File target) {
         try (ZipOutputStream zip = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(target)))) {
             zip.putNextEntry(new ZipEntry(source.getPath()));
             try (BufferedInputStream out = new BufferedInputStream(new FileInputStream(source))) {
@@ -49,8 +50,8 @@ public class Zip {
         }
 
         File outFile = new File(az.output());
-        Path start = Paths.get(az.directory());
-        List<File> files = Search.searchExcludeExtensions(start, az.exclude()).stream().map(
+        Path dir = Paths.get(az.directory());
+        List<File> files = Search.searchExcludeExtensions(dir, az.exclude()).stream().map(
                 path -> path.toFile()
         ).collect(Collectors.toList());
 
