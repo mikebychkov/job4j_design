@@ -11,9 +11,9 @@ public class ConsoleChat {
     private List<String> answers = new ArrayList<>();
     private List<String> log = new LinkedList<>();
     private String logFile = "";
-    private final String STOP_COMMAND = "стоп";
-    private final String CONTINUE_COMMAND = "продолжить";
-    private final String EXIT_COMMAND = "закончить";
+    private final String stopCommand = "стоп";
+    private final String continueCommand = "продолжить";
+    private final String exitCommand = "закончить";
 
     public ConsoleChat(String answersFile, String logFile) {
         File ansFl = new File(answersFile);
@@ -29,11 +29,11 @@ public class ConsoleChat {
         while (!exitMode) {
             String userIn = input.nextLine();
             this.log.add(userIn);
-            if (STOP_COMMAND.equals(userIn)) {
+            if (stopCommand.equals(userIn)) {
                 this.silentMode = true;
-            } else if (CONTINUE_COMMAND.equals(userIn)) {
+            } else if (continueCommand.equals(userIn)) {
                 this.silentMode = false;
-            } else if (EXIT_COMMAND.equals(userIn)) {
+            } else if (exitCommand.equals(userIn)) {
                 this.exitMode = true;
                 continue;
             }
