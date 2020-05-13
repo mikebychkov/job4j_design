@@ -50,8 +50,9 @@ public class ConsoleChat {
     public List<String> readAnswers(String filename) {
         List<String> out = new ArrayList<>();
         try (BufferedReader read = new BufferedReader(new FileReader(filename))) {
-            read.lines().map(ln -> ln.replace(".", ",")).flatMap(
-                    ln -> Stream.of(ln.split(","))
+            //read.lines().map(ln -> ln.replace(".", ",")).flatMap(
+            //        ln -> Stream.of(ln.split(","))
+            read.lines().flatMap(ln -> Stream.of(ln.split("[,.]"))
             ).forEach(out::add);
         } catch (Exception e) {
             e.printStackTrace();
