@@ -13,7 +13,7 @@ public class UsageLog4j2 {
     public static void main(String[] args) {
         String name = "Anthony Hopkins";
         int age = 82;
-        Calendar birthday = new GregorianCalendar(1937,11, 31);
+        Calendar birthday = new GregorianCalendar(1937, 11, 31);
         int oscarNominations = 5;
         int oscarCount = 1;
         String oscarMovie = "The Silence of the Lambs";

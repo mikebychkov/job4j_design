@@ -46,10 +46,10 @@ public class FileFinderArgs {
     public boolean valid() {
         this.valid = true;
         // ARGUMENTS NOT EMPTY CHECK
-        if (this.dir.isEmpty() ||
-                this.searchName.isEmpty() ||
-                this.searchFlag.isEmpty() ||
-                this.out.isEmpty()
+        if (this.dir.isEmpty()
+                || this.searchName.isEmpty()
+                || this.searchFlag.isEmpty()
+                || this.out.isEmpty()
         ) {
             this.valid = false;
             this.errors = "Arguments not set -d DIRECTORY -n FILE_NAME_MASK {-m, -f, -r} -o OUTPUT";

@@ -62,7 +62,7 @@ public class FileFinder {
         } else if (args.searchFlag().equals("-r")) {
             Pattern pat = Pattern.compile(args.searchName());
             return path -> pat.matcher(path.toFile().getName()).matches();
-        };
+        }
         return null;
     }
 
