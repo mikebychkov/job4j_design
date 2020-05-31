@@ -9,7 +9,6 @@ import java.lang.ref.SoftReference;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,7 +41,7 @@ public class Cache {
     }
 
     public static void main(String[] args) throws IOException {
-        Cache cc = new Cache(Paths.get("./txt"));
+        Cache cc = new Cache(Paths.get("../txt"));
         String cache1 = cc.getFileCache("names.txt");
         System.out.println(cache1);
         String cache2 = cc.getFileCache("addresses.txt");
