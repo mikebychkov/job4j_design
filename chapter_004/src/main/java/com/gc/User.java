@@ -9,6 +9,7 @@ package com.gc;
  */
 
 /** GC Statistics
+ * -Xms1m (Heap init size)
  * -Xmx64m (Heap max size)
  * -Xlog:gc (PrintGC)
  * -Xlog:gc* (PrintGCDetails)
@@ -26,6 +27,15 @@ package com.gc;
  * -Xlog:gc*,safepoint::uptime,time,level,tags
  *
  * https://docs.oracle.com/javase/9/tools/java.htm#GUID-BE93ABDC-999C-4CB5-A88B-1994AAAC74D5__CONVERTGCLOGGINGFLAGSTOXLOG-A5046BD1
+ */
+
+/** GC Profiling
+ * > jps
+ * ... (id)
+ * > jmap -heap (id)
+ * > jmap -dump
+ * > jstack (id)
+ * > jconsole
  */
 
 public class User {
