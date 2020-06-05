@@ -13,12 +13,12 @@ public class MaxMinTest {
     @Test
     public void testMaxMin1() {
         MaxMin mm = new MaxMin();
-        List<String> list = List.of("str", "str123", "strsuper");
+        List<String> list = List.of("str", "str123", "strsuper", "strpuper12");
         Comparator<String> comp = new Comparator<String>() {
             @Override
             public int compare(String s1, String s2) {
-                int i1 = s1.contains("super") ? 10 : 0;
-                int i2 = s2.contains("super") ? 10 : 0;
+                int i1 = s1.contains("super") ? 100 : s1.length();
+                int i2 = s2.contains("super") ? 100 : s2.length();
                 return i1 - i2;
             }
         };
@@ -29,7 +29,7 @@ public class MaxMinTest {
     }
 
     @Test
-    public void testMin() {
+    public void testMaxMin2() {
         MaxMin mm = new MaxMin();
         List<String> list = List.of("str", "str123", "strsuper");
         String rslMax = mm.max(list, (s1, s2) -> s1.length() - s2.length());
