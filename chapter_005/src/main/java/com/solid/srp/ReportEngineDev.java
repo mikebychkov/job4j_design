@@ -9,6 +9,7 @@ public class ReportEngineDev implements ReportEngine {
         this.store = store;
     }
 
+    @Override
     public String generate(Predicate<Employee> filter) {
         StringBuilder text = new StringBuilder();
 

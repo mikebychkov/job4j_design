@@ -10,6 +10,7 @@ public class ReportEngineHR implements ReportEngine {
         this.store = store;
     }
 
+    @Override
     public String generate(Predicate<Employee> filter) {
         List<Employee> list = store.findBy(filter);
         list.sort(
