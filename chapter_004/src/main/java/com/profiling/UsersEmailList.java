@@ -41,19 +41,19 @@ public class UsersEmailList {
         Scanner input = new Scanner(System.in);
         while (!exit) {
             System.out.println("Enter command (add, process, clear, exit):");
-            String in_comm = input.nextLine();
-            if (in_comm.equals("add")) {
+            String inComm = input.nextLine();
+            if (inComm.equals("add")) {
                 System.out.println("Enter user name:");
-                String in_user = input.nextLine();
+                String inUser = input.nextLine();
                 System.out.println("Enter user emails (comma separated):");
-                String in_emails = input.nextLine();
-                dataMap.put(in_user, in_emails);
-            } else if (in_comm.equals("process")) {
+                String inEmails = input.nextLine();
+                dataMap.put(inUser, inEmails);
+            } else if (inComm.equals("process")) {
                 Map<String, String> rslMap = UsersEmailList.correctEmailList(dataMap);
                 System.out.println(rslMap);
-            } else if (in_comm.equals("clear")) {
+            } else if (inComm.equals("clear")) {
                 dataMap.clear();
-            } else if (in_comm.equals("exit")) {
+            } else if (inComm.equals("exit")) {
                 exit = true;
             }
         }

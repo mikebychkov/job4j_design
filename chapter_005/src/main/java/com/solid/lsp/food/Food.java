@@ -48,12 +48,12 @@ public abstract class Food {
 
     @Override
     public String toString() {
-        return "Food{" +
-                "name='" + name + '\'' +
-                ", expireDate=" + expireDate.getTime() +
-                ", createDate=" + createDate.getTime() +
-                ", price=" + price +
-                ", discount=" + discount +
-                '}';
+        return "Food{"
+                + "name='" + name + '\''
+                + ", expireDate=" + expireDate.getTime()
+                + ", createDate=" + createDate.getTime()
+                + ", price=" + price
+                + ", discount=" + discount
+                + '}';
     }
 }

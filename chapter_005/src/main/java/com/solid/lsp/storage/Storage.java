@@ -12,9 +12,9 @@ public abstract class Storage {
     private byte expirePercentFromOnDiscount;
     private byte expirePercentToOnDiscount;
 
-    public Storage(List<Food> food
-            , byte expirePercentFrom, byte expirePercentTo
-            , byte expirePercentFromOnDiscount, byte expirePercentToOnDiscount) {
+    public Storage(List<Food> food,
+                   byte expirePercentFrom, byte expirePercentTo,
+                   byte expirePercentFromOnDiscount, byte expirePercentToOnDiscount) {
 
         this.food = new ArrayList<>(food);
         this.expirePercentFrom = expirePercentFrom;

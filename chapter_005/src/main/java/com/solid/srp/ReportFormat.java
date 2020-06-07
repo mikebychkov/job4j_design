@@ -12,7 +12,7 @@ public interface ReportFormat {
             case "hired": return emp.getHired().getTime().toString();
             case "fired": return emp.getFired().getTime().toString();
             case "salary": return String.valueOf(emp.getSalary());
+            default: throw new IllegalArgumentException();
         }
-        throw new IllegalArgumentException();
     }
 }
