@@ -48,4 +48,51 @@ public class UpperCaseStringConstructor {
         }
         return rsl.toUpperCase();
     }
+
+    public static String make4(List<String> list) {
+        String rsl = "";
+        for (String str : list) {
+            for (int i = 0; i < str.length(); i++) {
+                char c = str.charAt(i);
+                if (!Character.isLetter(c)) {
+                    rsl += c;
+                    continue;
+                }
+                rsl += (char)(c - 32);
+            }
+        }
+        return rsl;
+    }
+
+    public static String make5(List<String> list) {
+        String rsl = "";
+        for (String str : list) {
+            rsl += str + ",";
+        }
+        String rslUp = "";
+        for (int i = 0; i < rsl.length(); i++) {
+            char c = rsl.charAt(i);
+            if (!Character.isLetter(c)) {
+                rslUp += c;
+                continue;
+            }
+            rslUp += (char)(c - 32);
+        }
+        return rslUp;
+    }
+
+    public static String make6(List<String> list) {
+        String rsl = "";
+        for (String str : list) {
+            rsl += str + ",";
+        }
+        char[] rslUp = rsl.toCharArray();
+        for (int i = 0; i < rslUp.length; i++) {
+            if (!Character.isLetter(rslUp[i])) {
+                continue;
+            }
+            rslUp[i] = (char)(rslUp[i] - 32);
+        }
+        return String.valueOf(rslUp);
+    }
 }

@@ -21,6 +21,7 @@ public class BenchmarkingStringConstructor {
         }
     }
 
+    /*
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
     @Fork(value = 1, warmups = 2)
@@ -36,7 +37,9 @@ public class BenchmarkingStringConstructor {
     public void make1PostUp(ExecutionPlan plan) {
         String rsl = UpperCaseStringConstructor.make1PostUp(plan.list);
     }
+    */
 
+    /*
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
     @Fork(value = 1, warmups = 2)
@@ -44,6 +47,7 @@ public class BenchmarkingStringConstructor {
     public void make2(ExecutionPlan plan) {
         String rsl = UpperCaseStringConstructor.make2(plan.list);
     }
+    */
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
@@ -53,6 +57,7 @@ public class BenchmarkingStringConstructor {
         String rsl = UpperCaseStringConstructor.make2PostUp(plan.list);
     }
 
+    /*
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
     @Fork(value = 1, warmups = 2)
@@ -60,6 +65,7 @@ public class BenchmarkingStringConstructor {
     public void make3(ExecutionPlan plan) {
         String rsl = UpperCaseStringConstructor.make3(plan.list);
     }
+    */
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
@@ -67,6 +73,32 @@ public class BenchmarkingStringConstructor {
     @Warmup(iterations = 2)
     public void make3PostUp(ExecutionPlan plan) {
         String rsl = UpperCaseStringConstructor.make3PostUp(plan.list);
+    }
+
+    /*
+    @Benchmark
+    @BenchmarkMode(Mode.Throughput)
+    @Fork(value = 1, warmups = 2)
+    @Warmup(iterations = 2)
+    public void make4(ExecutionPlan plan) {
+        String rsl = UpperCaseStringConstructor.make4(plan.list);
+    }
+
+    @Benchmark
+    @BenchmarkMode(Mode.Throughput)
+    @Fork(value = 1, warmups = 2)
+    @Warmup(iterations = 2)
+    public void make5(ExecutionPlan plan) {
+        String rsl = UpperCaseStringConstructor.make5(plan.list);
+    }
+    */
+
+    @Benchmark
+    @BenchmarkMode(Mode.Throughput)
+    @Fork(value = 1, warmups = 2)
+    @Warmup(iterations = 2)
+    public void make6(ExecutionPlan plan) {
+        String rsl = UpperCaseStringConstructor.make6(plan.list);
     }
 
     public static void main(String[] args) throws IOException {
