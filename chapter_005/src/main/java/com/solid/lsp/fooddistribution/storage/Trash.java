@@ -1,6 +1,6 @@
-package com.solid.lsp.storage;
+package com.solid.lsp.fooddistribution.storage;
 
-import com.solid.lsp.food.Food;
+import com.solid.lsp.fooddistribution.food.Food;
 
 import java.util.ArrayList;
 import java.util.List;

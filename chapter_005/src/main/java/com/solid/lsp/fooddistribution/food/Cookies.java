@@ -1,4 +1,4 @@
-package com.solid.lsp.food;
+package com.solid.lsp.fooddistribution.food;
 
 import java.util.Calendar;
 

@@ -1,7 +1,6 @@
-package com.solid.lsp.food;
+package com.solid.lsp.fooddistribution.food;
 
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 /**
  * Food: describes food entity

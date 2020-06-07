@@ -1,16 +1,16 @@
-package com.solid.lsp;
+package com.solid.lsp.fooddistribution;
 
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-import com.solid.lsp.food.Cake;
-import com.solid.lsp.food.Cookies;
-import com.solid.lsp.food.Food;
-import com.solid.lsp.food.IceCream;
-import com.solid.lsp.storage.Shop;
-import com.solid.lsp.storage.Storage;
-import com.solid.lsp.storage.Trash;
-import com.solid.lsp.storage.Warehouse;
+import com.solid.lsp.fooddistribution.food.Cake;
+import com.solid.lsp.fooddistribution.food.Cookies;
+import com.solid.lsp.fooddistribution.food.Food;
+import com.solid.lsp.fooddistribution.food.IceCream;
+import com.solid.lsp.fooddistribution.storage.Shop;
+import com.solid.lsp.fooddistribution.storage.Storage;
+import com.solid.lsp.fooddistribution.storage.Trash;
+import com.solid.lsp.fooddistribution.storage.Warehouse;
 import org.junit.Before;
 import org.junit.Test;
 
