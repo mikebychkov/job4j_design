@@ -1,5 +1,7 @@
 package com.solid.lsp.parking;
 
+import java.util.List;
+
 public interface Parking {
 
     boolean submitCar(Vehicle car);
@@ -8,4 +10,7 @@ public interface Parking {
     boolean dismissTruck(Vehicle truck);
     int getCarFreePlaces();
     int getTruckFreePlaces();
+    int getTruckExtraPlaces();
+    List<Vehicle> getCarList();
+    List<Vehicle> getTruckList();
 }
