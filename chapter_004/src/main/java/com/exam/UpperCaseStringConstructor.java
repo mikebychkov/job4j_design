@@ -58,7 +58,7 @@ public class UpperCaseStringConstructor {
                     rsl += c;
                     continue;
                 }
-                rsl += (char)(c - 32);
+                rsl += (char) (c - 32);
             }
         }
         return rsl;
@@ -76,7 +76,7 @@ public class UpperCaseStringConstructor {
                 rslUp += c;
                 continue;
             }
-            rslUp += (char)(c - 32);
+            rslUp += (char) (c - 32);
         }
         return rslUp;
     }
@@ -91,7 +91,7 @@ public class UpperCaseStringConstructor {
             if (!Character.isLetter(rslUp[i])) {
                 continue;
             }
-            rslUp[i] = (char)(rslUp[i] - 32);
+            rslUp[i] = (char) (rslUp[i] - 32);
         }
         return String.valueOf(rslUp);
     }
