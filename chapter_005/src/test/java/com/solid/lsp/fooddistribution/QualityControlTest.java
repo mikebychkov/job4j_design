@@ -61,7 +61,9 @@ public class QualityControlTest {
         shop = new Shop();
         trash = new Trash();
 
-        qc = new QualityControl(warehouse, shop, trash);
+        List<Storage> storages = List.of(warehouse, shop, trash);
+
+        qc = new QualityControl(storages);
     }
 
     @Test

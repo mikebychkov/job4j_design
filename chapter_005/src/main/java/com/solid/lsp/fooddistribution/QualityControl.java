@@ -9,16 +9,12 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 public class QualityControl {
-    private Storage warehouse;
-    private Storage shop;
-    private Storage trash;
+    private List<Storage> storages;
     private Calendar relocationDate = new GregorianCalendar();
     private List<Food> food = new ArrayList<>();
 
-    public QualityControl(Storage warehouse, Storage shop, Storage trash) {
-        this.warehouse = warehouse;
-        this.shop = shop;
-        this.trash = trash;
+    public QualityControl(List<Storage> storages) {
+        this.storages = storages;
         this.relocationDate.setTimeInMillis(System.currentTimeMillis());
     }
 
@@ -26,22 +22,21 @@ public class QualityControl {
         pollFood();
         for (Food fo : this.food) {
             byte percent = fo.getExpirationPercentage(relocationDate);
-            if (this.warehouse.isPercentageFeats(percent)) {
-                this.warehouse.add(fo);
-            } else if (this.shop.isPercentageFeats(percent)) {
-                this.shop.add(fo);
-            } else if (this.shop.isPercentageFeatsOnDiscount(percent)) {
-                fo.setDiscount(discountValue);
-                this.shop.add(fo);
-            } else {
-                this.trash.add(fo);
+            for (Storage store : this.storages) {
+                if (store.isPercentageFeats(percent)) {
+                    store.add(fo);
+                } else if (store.isPercentageFeatsOnDiscount(percent)) {
+                    fo.setDiscount(discountValue);
+                    store.add(fo);
+                }
             }
         }
         this.food.clear();
     }
 
     private void pollFood() {
-        this.food.addAll(this.warehouse.pollAll());
-        this.food.addAll(this.shop.pollAll());
+        for (Storage store : this.storages) {
+            this.food.addAll(store.pollAll());
+        }
     }
 }
