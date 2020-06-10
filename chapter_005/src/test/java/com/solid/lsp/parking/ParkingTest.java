@@ -1,6 +1,5 @@
 package com.solid.lsp.parking;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
@@ -10,15 +9,9 @@ import static org.hamcrest.core.Is.is;
 
 public class ParkingTest {
 
-    Parking park;
-
-    @Before
-    public void init() {
-        park = new CarParking(10, 2, 3);
-    }
-
     @Test
     public void submitCar() {
+        Parking park = new CarParking(10, 2, 3);
         Vehicle car = new Car("AB 303");
         park.submitCar(car);
         List<Vehicle> exp = List.of(car);
@@ -27,6 +20,7 @@ public class ParkingTest {
 
     @Test
     public void submitTruck() {
+        Parking park = new CarParking(10, 2, 3);
         Vehicle truck = new Truck("GG 447");
         park.submitCar(truck);
         List<Vehicle> exp = List.of(truck);
@@ -35,6 +29,7 @@ public class ParkingTest {
 
     @Test
     public void dismissCar() {
+        Parking park = new CarParking(10, 2, 3);
         Vehicle car = new Car("AB 303");
         park.submitCar(car);
         assertThat(park.getCarList().size(), is(1));
@@ -44,6 +39,7 @@ public class ParkingTest {
 
     @Test
     public void dismissTruck() {
+        Parking park = new CarParking(10, 2, 3);
         Vehicle truck = new Truck("GG 447");
         park.submitTruck(truck);
         assertThat(park.getTruckList().size(), is(1));
@@ -53,6 +49,7 @@ public class ParkingTest {
 
     @Test
     public void getCarFreePlaces() {
+        Parking park = new CarParking(10, 2, 3);
         Vehicle car1 = new Car("AB 303");
         Vehicle car2 = new Car("AB 304");
         Vehicle truck = new Truck("GG 447");
@@ -64,6 +61,7 @@ public class ParkingTest {
 
     @Test
     public void getTruckFreePlaces() {
+        Parking park = new CarParking(10, 2, 3);
         Vehicle truck = new Truck("GG 447");
         park.submitTruck(truck);
         assertThat(park.getTruckFreePlaces(), is(1));
@@ -71,6 +69,7 @@ public class ParkingTest {
 
     @Test
     public void getTruckExtraPlaces() {
+        Parking park = new CarParking(10, 2, 3);
         Vehicle truck = new Truck("GG 447");
         park.submitCar(truck);
         assertThat(park.getTruckExtraPlaces(), is(2));
