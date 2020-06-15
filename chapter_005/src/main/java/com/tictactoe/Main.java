@@ -29,7 +29,8 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         FieldPainter fp = new ConsolePainter();
         NextMove nm = new NextMoveGen();
-        Game game = new Game(fp, nm);
+        WinState ws = new WinStateCheck();
+        Game game = new Game(fp, nm, ws);
 
         init(game);
 

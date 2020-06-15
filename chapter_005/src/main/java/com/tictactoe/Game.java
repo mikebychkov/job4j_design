@@ -4,18 +4,20 @@ public class Game {
     private String[][] field;
     private NextMove nextMove;
     private FieldPainter fieldPainter;
+    private WinState winState;
     private String userMarker = "X";
     private String compMarker = "O";
     private int rows;
     private int columns;
 
-    public Game(FieldPainter fp, NextMove nm) {
-        this(fp, nm, 3, 3);
+    public Game(FieldPainter fp, NextMove nm, WinState ws) {
+        this(fp, nm, ws, 3, 3);
     }
 
-    public Game(FieldPainter fp, NextMove nm, int rows, int columns) {
+    public Game(FieldPainter fp, NextMove nm, WinState ws, int rows, int columns) {
         this.fieldPainter = fp;
         this.nextMove = nm;
+        this.winState = ws;
         this.rows = rows;
         this.columns = columns;
         this.field = new String[rows][columns];
@@ -63,7 +65,6 @@ public class Game {
     }
 
     private boolean isWin(String marker) {
-        // TODO: 15.06.2020 Win condition
-        return false;
+        return this.winState.isWin(this.field.clone(), marker);
     }
 }
