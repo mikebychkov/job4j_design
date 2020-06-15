@@ -6,6 +6,7 @@ public class WinStateCheck implements WinState {
     private int rows;
     private int columns;
     private String marker;
+    private FieldAnalyser fa;
 
     @Override
     public boolean isWin(String[][] field, String marker) {
@@ -16,6 +17,8 @@ public class WinStateCheck implements WinState {
         this.field = field;
         this.rows = field.length;
         this.columns = field[0].length;
+
+        this.fa = new FieldAnalyser(field);
 
         boolean rsl = checkRows();
         if (!rsl) {
@@ -29,8 +32,8 @@ public class WinStateCheck implements WinState {
     }
 
     private boolean checkRows() {
-        for (int i = 0; i < this.rows; i++) {
-            boolean rsl = check(i, 0, 0, 1);
+        for (int i = 0; i < rows; i++) {
+            boolean rsl = fa.checkAll(marker, i, 0, 0, 1);
             if (rsl) {
                 return true;
             }
@@ -39,8 +42,8 @@ public class WinStateCheck implements WinState {
     }
 
     private boolean checkColumns() {
-        for (int i = 0; i < this.columns; i++) {
-            boolean rsl = check(0, i, 1, 0);
+        for (int i = 0; i < columns; i++) {
+            boolean rsl = fa.checkAll(marker, 0, i, 1, 0);
             if (rsl) {
                 return true;
             }
@@ -49,19 +52,7 @@ public class WinStateCheck implements WinState {
     }
 
     private boolean checkDiagonals() {
-        return check(0, 0, 1, 1)
-                || check(this.rows - 1, 0, -1, 1);
-    }
-
-    private boolean check(int rowIndex, int columnIndex,
-                            int rowIncrement, int columnIncrement) {
-        for (int i = rowIndex; i < this.rows; i += rowIncrement) {
-            for (int j = columnIndex; j < this.rows; j += columnIncrement) {
-                if (!marker.equals(this.field[i][j])) {
-                    return false;
-                }
-            }
-        }
-        return true;
+        return fa.checkAll(marker, 0, 0, 1, 1)
+                || fa.checkAll(marker, rows - 1, 0, -1, 1);
     }
 }

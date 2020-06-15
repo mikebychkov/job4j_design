@@ -25,32 +25,32 @@ public class Game {
     }
 
     public void initField() {
-        for (int i = 0; i < this.rows; i++) {
-            for (int j = 0; j < this.columns; j++) {
-                this.field[i][j] = "";
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                field[i][j] = "";
             }
         }
     }
 
     public void paint() {
-        this.fieldPainter.paint(this.field.clone());
+        fieldPainter.paint(field.clone());
     }
 
     public boolean makeUserMove(Cell cell) {
-        return makeMove(cell, this.userMarker);
+        return makeMove(cell, userMarker);
     }
 
     public boolean makeCompMove() {
-        Cell cell = this.nextMove.getNextCellToMove(this.field.clone(), this.compMarker);
-        return makeMove(cell, this.compMarker);
+        Cell cell = nextMove.getNextCellToMove(field.clone(), compMarker, userMarker);
+        return makeMove(cell, compMarker);
     }
 
     private boolean makeMove(Cell cell, String marker) {
-        if (cell.row >= this.rows || cell.column >= this.columns
+        if (cell.row >= rows || cell.column >= columns
             || cell.row < 0 || cell.column < 0) {
             return false;
         }
-        if (!this.field[cell.row][cell.column].isEmpty()) {
+        if (!field[cell.row][cell.column].isEmpty()) {
             return false;
         }
         this.field[cell.row][cell.column] = marker;
@@ -58,14 +58,19 @@ public class Game {
     }
 
     public boolean isUserWin() {
-        return isWin(this.userMarker);
+        return isWin(userMarker);
     }
 
     public boolean isCompWin() {
-        return isWin(this.compMarker);
+        return isWin(compMarker);
     }
 
     private boolean isWin(String marker) {
-        return this.winState.isWin(this.field.clone(), marker);
+        return winState.isWin(field.clone(), marker);
+    }
+
+    public boolean gameFieldIsFull() {
+        FieldAnalyser fa = new FieldAnalyser(field.clone());
+        return fa.gameFieldIsFull();
     }
 }

@@ -39,6 +39,13 @@ public class Main {
 
         boolean exitMode = false;
         while (!exitMode) {
+            if (game.gameFieldIsFull()) {
+                System.out.println("=".repeat(21));
+                System.out.println("Game field is full! No winner!");
+                printScores(userScore, compScore);
+                System.out.println("=".repeat(21));
+                init(game);
+            }
             System.out.println("Enter coordinates to mark (use comma sign as a separator):");
             String input = sc.nextLine();
             if ("exit".equals(input)) {
@@ -67,11 +74,14 @@ public class Main {
             game.paint();
             if (game.isUserWin()) {
                 userScore++;
+                System.out.println("=".repeat(21));
                 System.out.println("Player WIN!");
                 printScores(userScore, compScore);
+                System.out.println("=".repeat(21));
                 init(game);
                 continue;
             }
+            System.out.println("Computer turn:");
             boolean compMoveRsl = game.makeCompMove();
             if (!compMoveRsl) {
                 System.out.println("Sorry, somehow computer is not able to make a move!");
