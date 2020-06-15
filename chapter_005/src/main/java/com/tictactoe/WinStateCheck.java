@@ -17,18 +17,18 @@ public class WinStateCheck implements WinState {
         this.rows = field.length;
         this.columns = field[0].length;
 
-        boolean rsl = checkInRows();
+        boolean rsl = checkRows();
         if (!rsl) {
-            rsl = checkInColumns();
+            rsl = checkColumns();
         }
         if (!rsl) {
-            rsl = checkInDiagonals();
+            rsl = checkDiagonals();
         }
 
         return rsl;
     }
 
-    private boolean checkInRows() {
+    private boolean checkRows() {
         for (int i = 0; i < this.rows; i++) {
             boolean rsl = check(i, 0, 0, 1);
             if (rsl) {
@@ -38,7 +38,7 @@ public class WinStateCheck implements WinState {
         return false;
     }
 
-    private boolean checkInColumns() {
+    private boolean checkColumns() {
         for (int i = 0; i < this.columns; i++) {
             boolean rsl = check(0, i, 1, 0);
             if (rsl) {
@@ -48,7 +48,7 @@ public class WinStateCheck implements WinState {
         return false;
     }
 
-    private boolean checkInDiagonals() {
+    private boolean checkDiagonals() {
         return check(0, 0, 1, 1)
                 || check(this.rows - 1, 0, -1, 1);
     }

@@ -59,7 +59,7 @@ public class Main {
                 System.out.println("You need to specify coordinates in numbers!");
                 continue;
             }
-            Boolean moveRsl = game.makeUserMove(new Cell(row, column));
+            boolean moveRsl = game.makeUserMove(new Cell(row, column));
             if (!moveRsl) {
                 System.out.println("Sorry, you can't use this coordinates!");
                 continue;
@@ -72,7 +72,11 @@ public class Main {
                 init(game);
                 continue;
             }
-            game.makeCompMove();
+            boolean compMoveRsl = game.makeCompMove();
+            if (!compMoveRsl) {
+                System.out.println("Sorry, somehow computer is not able to make a move!");
+                continue;
+            }
             game.paint();
             if (game.isCompWin()) {
                 compScore++;

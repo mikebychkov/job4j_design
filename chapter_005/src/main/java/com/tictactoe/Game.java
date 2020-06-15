@@ -41,12 +41,13 @@ public class Game {
     }
 
     public boolean makeCompMove() {
-        Cell cell = this.nextMove.getNextCellToMove(this.field.clone());
+        Cell cell = this.nextMove.getNextCellToMove(this.field.clone(), this.compMarker);
         return makeMove(cell, this.compMarker);
     }
 
     private boolean makeMove(Cell cell, String marker) {
-        if (cell.row >= this.rows || cell.column >= this.columns) {
+        if (cell.row >= this.rows || cell.column >= this.columns
+            || cell.row < 0 || cell.column < 0) {
             return false;
         }
         if (!this.field[cell.row][cell.column].isEmpty()) {
