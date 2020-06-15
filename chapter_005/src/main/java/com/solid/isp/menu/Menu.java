@@ -6,14 +6,14 @@ public class Menu {
 
     public static Node makeMenu() {
         Node rootNode = new MenuNode("root");
-        Node Node1 = rootNode.add(new MenuNode("say 1"));
-        Node1.add(new MenuNode("say 1.1"));
-        Node1.add(new MenuNode("say 1.2")).add(new MenuNode("say 1.2.1"));
-        Node Node2 = rootNode.add(new MenuNode("say 2"));
-        Node2.add(new MenuNode("say 2.1"));
-        Node2.add(new MenuNode("say 2.2"));
-        Node Node3 = rootNode.add(new MenuNode("say 3"));
-        Node3.add(new MenuNode("say 3.1")).add(new MenuNode("say 3.1.1"));
+        Node node1 = rootNode.add(new MenuNode("say 1"));
+        node1.add(new MenuNode("say 1.1"));
+        node1.add(new MenuNode("say 1.2")).add(new MenuNode("say 1.2.1"));
+        Node node2 = rootNode.add(new MenuNode("say 2"));
+        node2.add(new MenuNode("say 2.1"));
+        node2.add(new MenuNode("say 2.2"));
+        Node node3 = rootNode.add(new MenuNode("say 3"));
+        node3.add(new MenuNode("say 3.1")).add(new MenuNode("say 3.1.1"));
         return rootNode;
     }
 
