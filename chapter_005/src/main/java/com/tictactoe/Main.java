@@ -27,10 +27,8 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        FieldPainter fp = new ConsolePainter();
-        NextMove nm = new NextMoveGen();
-        WinState ws = new WinStateCheck();
-        Game game = new Game(fp, nm, ws);
+        GameFactory gameFactory = new DeafaultFactory();
+        Game game = new Game(gameFactory);
 
         init(game);
 

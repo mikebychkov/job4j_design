@@ -10,14 +10,14 @@ public class Game {
     private int rows;
     private int columns;
 
-    public Game(FieldPainter fp, NextMove nm, WinState ws) {
-        this(fp, nm, ws, 3, 3);
+    public Game(GameFactory gf) {
+        this(gf, 3, 3);
     }
 
-    public Game(FieldPainter fp, NextMove nm, WinState ws, int rows, int columns) {
-        this.fieldPainter = fp;
-        this.nextMove = nm;
-        this.winState = ws;
+    public Game(GameFactory gf, int rows, int columns) {
+        this.fieldPainter = gf.getFieldPainter();
+        this.nextMove = gf.getNextMove();
+        this.winState = gf.getWinState();
         this.rows = rows;
         this.columns = columns;
         this.field = new String[rows][columns];
